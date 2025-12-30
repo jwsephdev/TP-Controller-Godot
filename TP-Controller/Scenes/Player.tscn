@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8ex7hh6o24ci"]
+
+[ext_resource type="Script" uid="uid://fnimod1txx50" path="res://Scripts/player.gd" id="1_gntrk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rwas"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xhfnw"]
+material = SubResource("StandardMaterial3D_0rwas")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_gntrk")
+
+[node name="playerVisuals" type="Node3D" parent="."]
+
+[node name="playerMesh" type="MeshInstance3D" parent="playerVisuals"]
+mesh = SubResource("CapsuleMesh_xhfnw")
+skeleton = NodePath("../..")
+
+[node name="playerCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kpjcp")
+
+[node name="cameraMount" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46949762, 0)
+
+[node name="cameraSpringarm" type="SpringArm3D" parent="cameraMount"]
+spring_length = 5.0
+margin = 0.02
+
+[node name="camera" type="Camera3D" parent="cameraMount/cameraSpringarm"]
