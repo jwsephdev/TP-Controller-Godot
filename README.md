@@ -22,4 +22,4 @@ A Third Person Character Controller Made for Godot 4.5.1<br>
 
 **[W,A,S,D]** - Character Movement<br>
 **[SPACE]** - Jump<br>
-
+**[CTRL]** - Crouch<br>
